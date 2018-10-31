@@ -3,7 +3,7 @@
     "meta": {
         "version": "PTDL_v1"
     },
-    "exported_at": "2018-10-30T20:38:41-07:00",
+    "exported_at": "2018-10-30T22:48:55-07:00",
     "name": "Stationeers",
     "author": "test@example.com",
     "description": "Stationeers",
@@ -39,7 +39,7 @@
             "default_value": "27015",
             "user_viewable": 1,
             "user_editable": 0,
-            "rules": "required|integer"
+            "rules": "required|integer|between:1024,65535"
         },
         {
             "name": "PASSWORD",
@@ -48,7 +48,7 @@
             "default_value": "",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "string|max:20"
+            "rules": "nullable|string|max:20"
         },
         {
             "name": "MAPNAME",
@@ -63,10 +63,10 @@
             "name": "DESCRIPTION",
             "description": "",
             "env_variable": "DESCRIPTION",
-            "default_value": "",
+            "default_value": "Stationeers",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "string|max:20"
+            "rules": "required|string|max:20"
         },
         {
             "name": "MAXPLAYER",
@@ -75,7 +75,7 @@
             "default_value": "4",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "required|string|max:20"
+            "rules": "required|integer|between:1,30"
         },
         {
             "name": "RCONPASSWORD",
@@ -84,16 +84,16 @@
             "default_value": "",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "string|max:20"
+            "rules": "nullable|string|max:20"
         },
         {
             "name": "World Type",
             "description": "",
             "env_variable": "WORLD_TYPE",
             "default_value": "Mars",
-            "user_viewable": 0,
-            "user_editable": 0,
-            "rules": "required|string|max:20"
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "required|string|max:10"
         },
         {
             "name": "Autosave Interval",
@@ -102,7 +102,7 @@
             "default_value": "300",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "required|string|max:20"
+            "rules": "required|integer|min:300"
         },
         {
             "name": "Clear All Interval",
@@ -111,7 +111,7 @@
             "default_value": "3600",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "required|string|max:20"
+            "rules": "required|integer|min:-1"
         }
     ]
 }
