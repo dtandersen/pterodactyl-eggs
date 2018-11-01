@@ -3,12 +3,12 @@
     "meta": {
         "version": "PTDL_v1"
     },
-    "exported_at": "2018-11-01T10:08:03-07:00",
+    "exported_at": "2018-11-01T11:06:39-07:00",
     "name": "Stationeers",
     "author": "test@example.com",
     "description": "Stationeers",
     "image": "dtandersen\/steam-egg",
-    "startup": ".\/rocketstation_DedicatedServer.x86_64 -batchmode -nographics -autostart -worldtype={{WORLD_TYPE}} -worldname={{MAPNAME}} -loadworld={{MAPNAME}} -autosaveinterval={{AUTO_SAVE_INTERVAL}} -clearallinterval={{CLEAR_ALL_INTERVAL}}",
+    "startup": ".\/rocketstation_DedicatedServer.x86_64 -batchmode -nographics -autostart -worldtype={{WORLD_TYPE}} -worldname={{MAPNAME}} -loadworld={{MAPNAME}} -autosaveinterval={{AUTO_SAVE_INTERVAL}} -clearallinterval={{CLEAR_ALL_INTERVAL}} -password=\"{{PASSWORD}}\" -maxplayer={{MAXPLAYER}} -servername=\"{{SERVERNAME}}\" -gameport={{SERVER_PORT}} -updateport={{UPDATERPORT}}",
     "config": {
         "files": "{\r\n    \"default.ini\": {\r\n        \"parser\": \"ini\",\r\n        \"find\": {\r\n            \"SERVER.SERVERNAME\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"SERVER.GAMEPORT\": \"{{server.build.default.port}}\",\r\n            \"SERVER.UPDATERPORT\": \"{{server.build.env.UPDATERPORT}}\",\r\n            \"SERVER.PASSWORD\": \"{{server.build.env.PASSWORD}}\",\r\n            \"SERVER.MAPNAME\": \"{{server.build.env.MAPNAME}}\",\r\n            \"SERVER.DESCRIPTION\": \"{{server.build.env.DESCRIPTION}}\",\r\n            \"SERVER.MAXPLAYER\": \"{{server.build.env.MAXPLAYER}}\",\r\n            \"RCON.RCONPASSWORD\": \"{{server.build.env.RCONPASSWORD}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"Setting breakpad minidump AppID = 544550\",\r\n    \"userInteraction\": []\r\n}",
@@ -48,7 +48,7 @@
             "default_value": "",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "nullable|string|max:20"
+            "rules": "nullable|string"
         },
         {
             "name": "Save name",
