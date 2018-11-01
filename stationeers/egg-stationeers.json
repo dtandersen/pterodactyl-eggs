@@ -8,11 +8,11 @@
     "author": "test@example.com",
     "description": "Stationeers",
     "image": "dtandersen\/stationeers-egg",
-    "startup": ".\/rocketstation_DedicatedServer.x86_64 -batchmode -nographics -autostart -worldtype={{WORLD_TYPE}} -worldname={{MAPNAME}}  -loadworld={{MAPNAME}} -autosaveinterval={{AUTO_SAVE_INTERVAL}} -clearallinterval={{CLEAR_ALL_INTERVAL}}",
+    "startup": ".\/rocketstation_DedicatedServer.x86_64 -batchmode -nographics -autostart -worldtype={{WORLD_TYPE}} -worldname={{MAPNAME}} -loadworld={{MAPNAME}} -autosaveinterval={{AUTO_SAVE_INTERVAL}} -clearallinterval={{CLEAR_ALL_INTERVAL}}",
     "config": {
         "files": "{\r\n    \"default.ini\": {\r\n        \"parser\": \"ini\",\r\n        \"find\": {\r\n            \"SERVERNAME\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"GAMEPORT\": \"{{server.build.default.port}}\",\r\n            \"UPDATERPORT\": \"{{server.build.env.UPDATERPORT}}\",\r\n            \"PASSWORD\": \"{{server.build.env.PASSWORD}}\",\r\n            \"MAPNAME\": \"{{server.build.env.MAPNAME}}\",\r\n            \"DESCRIPTION\": \"{{server.build.env.DESCRIPTION}}\",\r\n            \"MAXPLAYER\": \"{{server.build.env.MAXPLAYER}}\",\r\n            \"RCONPASSWORD\": \"{{server.build.env.RCONPASSWORD}}\"\r\n        }\r\n    }\r\n}",
-        "startup": "{\r\n    \"done\": \")! For help, type \",\r\n    \"userInteraction\": []\r\n}",
-        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/Player.log\"\r\n}",
+        "startup": "{\r\n    \"done\": \"Setting breakpad minidump AppID = 544550\",\r\n    \"userInteraction\": []\r\n}",
+        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \".config\/unity3d\/Rocketwerkz\/rocketstation\/Player.log\"\r\n}",
         "stop": "^C"
     },
     "scripts": {
@@ -24,7 +24,7 @@
     },
     "variables": [
         {
-            "name": "SERVERNAME",
+            "name": "Server name",
             "description": "",
             "env_variable": "SERVERNAME",
             "default_value": "Stationeers",
@@ -33,16 +33,7 @@
             "rules": "required|string|max:20"
         },
         {
-            "name": "UPDATERPORT",
-            "description": "",
-            "env_variable": "UPDATERPORT",
-            "default_value": "27015",
-            "user_viewable": 1,
-            "user_editable": 0,
-            "rules": "required|integer|between:1024,65535"
-        },
-        {
-            "name": "PASSWORD",
+            "name": "Password",
             "description": "",
             "env_variable": "PASSWORD",
             "default_value": "",
@@ -51,7 +42,7 @@
             "rules": "nullable|string|max:20"
         },
         {
-            "name": "MAPNAME",
+            "name": "Save name",
             "description": "",
             "env_variable": "MAPNAME",
             "default_value": "Mars",
@@ -60,7 +51,7 @@
             "rules": "required|string|max:20"
         },
         {
-            "name": "DESCRIPTION",
+            "name": "Server Description",
             "description": "",
             "env_variable": "DESCRIPTION",
             "default_value": "Stationeers",
@@ -69,7 +60,7 @@
             "rules": "required|string|max:20"
         },
         {
-            "name": "MAXPLAYER",
+            "name": "Slots",
             "description": "",
             "env_variable": "MAXPLAYER",
             "default_value": "4",
@@ -78,7 +69,7 @@
             "rules": "required|integer|between:1,30"
         },
         {
-            "name": "RCONPASSWORD",
+            "name": "RCON Password",
             "description": "",
             "env_variable": "RCONPASSWORD",
             "default_value": "",
@@ -96,7 +87,7 @@
             "rules": "required|string|max:10"
         },
         {
-            "name": "Autosave Interval",
+            "name": "Auto save interval",
             "description": "",
             "env_variable": "AUTO_SAVE_INTERVAL",
             "default_value": "300",
@@ -105,13 +96,22 @@
             "rules": "required|integer|min:300"
         },
         {
-            "name": "Clear All Interval",
+            "name": "Clear all interval",
             "description": "",
             "env_variable": "CLEAR_ALL_INTERVAL",
             "default_value": "3600",
             "user_viewable": 1,
             "user_editable": 1,
             "rules": "required|integer|min:-1"
+        },
+        {
+            "name": "Updater port",
+            "description": "",
+            "env_variable": "UPDATERPORT",
+            "default_value": "27015",
+            "user_viewable": 1,
+            "user_editable": 0,
+            "rules": "required|integer|between:1024,65535"
         }
     ]
 }
