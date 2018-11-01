@@ -3,21 +3,21 @@
     "meta": {
         "version": "PTDL_v1"
     },
-    "exported_at": "2018-10-30T22:48:55-07:00",
+    "exported_at": "2018-11-01T10:08:03-07:00",
     "name": "Stationeers",
     "author": "test@example.com",
     "description": "Stationeers",
-    "image": "dtandersen\/stationeers-egg",
+    "image": "dtandersen\/steam-egg",
     "startup": ".\/rocketstation_DedicatedServer.x86_64 -batchmode -nographics -autostart -worldtype={{WORLD_TYPE}} -worldname={{MAPNAME}} -loadworld={{MAPNAME}} -autosaveinterval={{AUTO_SAVE_INTERVAL}} -clearallinterval={{CLEAR_ALL_INTERVAL}}",
     "config": {
-        "files": "{\r\n    \"default.ini\": {\r\n        \"parser\": \"ini\",\r\n        \"find\": {\r\n            \"SERVERNAME\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"GAMEPORT\": \"{{server.build.default.port}}\",\r\n            \"UPDATERPORT\": \"{{server.build.env.UPDATERPORT}}\",\r\n            \"PASSWORD\": \"{{server.build.env.PASSWORD}}\",\r\n            \"MAPNAME\": \"{{server.build.env.MAPNAME}}\",\r\n            \"DESCRIPTION\": \"{{server.build.env.DESCRIPTION}}\",\r\n            \"MAXPLAYER\": \"{{server.build.env.MAXPLAYER}}\",\r\n            \"RCONPASSWORD\": \"{{server.build.env.RCONPASSWORD}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"default.ini\": {\r\n        \"parser\": \"ini\",\r\n        \"find\": {\r\n            \"SERVER.SERVERNAME\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"SERVER.GAMEPORT\": \"{{server.build.default.port}}\",\r\n            \"SERVER.UPDATERPORT\": \"{{server.build.env.UPDATERPORT}}\",\r\n            \"SERVER.PASSWORD\": \"{{server.build.env.PASSWORD}}\",\r\n            \"SERVER.MAPNAME\": \"{{server.build.env.MAPNAME}}\",\r\n            \"SERVER.DESCRIPTION\": \"{{server.build.env.DESCRIPTION}}\",\r\n            \"SERVER.MAXPLAYER\": \"{{server.build.env.MAXPLAYER}}\",\r\n            \"RCON.RCONPASSWORD\": \"{{server.build.env.RCONPASSWORD}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"Setting breakpad minidump AppID = 544550\",\r\n    \"userInteraction\": []\r\n}",
         "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \".config\/unity3d\/Rocketwerkz\/rocketstation\/Player.log\"\r\n}",
         "stop": "^C"
     },
     "scripts": {
         "installation": {
-            "script": null,
+            "script": "#!\\bin\\ash\r\ntouch default.ini",
             "container": "alpine:3.4",
             "entrypoint": "ash"
         }
@@ -33,6 +33,15 @@
             "rules": "required|string|max:20"
         },
         {
+            "name": "Updater port",
+            "description": "",
+            "env_variable": "UPDATERPORT",
+            "default_value": "27015",
+            "user_viewable": 1,
+            "user_editable": 0,
+            "rules": "required|integer|between:1024,65535"
+        },
+        {
             "name": "Password",
             "description": "",
             "env_variable": "PASSWORD",
@@ -45,13 +54,13 @@
             "name": "Save name",
             "description": "",
             "env_variable": "MAPNAME",
-            "default_value": "Mars",
+            "default_value": "mysave",
             "user_viewable": 1,
             "user_editable": 1,
             "rules": "required|string|max:20"
         },
         {
-            "name": "Server Description",
+            "name": "Server description",
             "description": "",
             "env_variable": "DESCRIPTION",
             "default_value": "Stationeers",
@@ -84,7 +93,7 @@
             "default_value": "Mars",
             "user_viewable": 1,
             "user_editable": 1,
-            "rules": "required|string|max:10"
+            "rules": "required|string|in:Mars,Europa,Moon"
         },
         {
             "name": "Auto save interval",
@@ -105,13 +114,13 @@
             "rules": "required|integer|min:-1"
         },
         {
-            "name": "Updater port",
+            "name": "Beta Version",
             "description": "",
-            "env_variable": "UPDATERPORT",
-            "default_value": "27015",
+            "env_variable": "BETA",
+            "default_value": "public",
             "user_viewable": 1,
-            "user_editable": 0,
-            "rules": "required|integer|between:1024,65535"
+            "user_editable": 1,
+            "rules": "required|string|in:public,beta"
         }
     ]
 }
